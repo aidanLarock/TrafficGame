@@ -3,7 +3,7 @@ package Players;
 import Vehicle.Vehicle;
 
 /**
- * This class operates the player movement. 
+ * This class operates the player movement.
  * 
  * 
  * @author Aidan Larock 6186076, Michael Wisniewski 6402176
