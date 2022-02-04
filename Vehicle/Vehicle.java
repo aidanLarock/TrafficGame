@@ -15,19 +15,21 @@ package Vehicle;
  */
 public abstract class Vehicle {
 
-  Double speed;
+  private Double speed;
 
-  Double acceleration;
+  private Double acceleration;
 
-  Integer reputation;
+  private Integer reputation;
 
-  Integer health;
+  private Integer health;
 
-  Integer size;
+  private String image;
 
-  final Integer MAXREP = 100;
+  private Integer size;
 
-  final Integer MINREP = 1;
+  private final Integer MAXREP = 100;
+
+  private final Integer MINREP = 1;
 
   /**
    * This method moves a vechicle by a unit

@@ -5,16 +5,6 @@ import Game.*;
 import Map.Map;
 
 /**
- * TODO 
- * 
- * Game.Gamble needs vehicle return 
- * Add main constructor
- * Add 2-D array to map.graph
- * map.graph fix start to lower case
- * map.graph start and end intersections global?
- */
-
-/**
  * This is the Main class of the game. This class will combine
  * the game mechanics with the GUI. It will provide update
  * functions for GUI with the the according vehicle posistions
