@@ -1,4 +1,4 @@
-# TrafficGame
+# Traffic Sim
 <p align="center">
   <img src="https://github.com/aidanLarock/TrafficGame/blob/main/images/tsim.png"/>
 
