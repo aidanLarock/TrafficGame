@@ -7,7 +7,7 @@ Players control a vehcile and attept to manuver their vheicle around busy street
 <\p>
 
 <p align="center">
-  <img src="https://github.com/Delaford/game/raw/master/src/assets/github/logo.png"/>
+  <img src="https://github.com/aidanLarock/TrafficGame/blob/main/images/tsim.png"/>
 </p>
 
 ## Getting Started
