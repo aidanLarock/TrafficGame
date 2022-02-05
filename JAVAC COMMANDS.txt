@@ -1,5 +1,6 @@
 CD into assignment folder,
 
+You should see:
 C:.
 ├───build
 │   ├───Game
