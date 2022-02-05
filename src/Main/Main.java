@@ -1,7 +1,7 @@
 package Main;
 
 import GUI.Display;
-import Game.*;
+import Game.Game;
 import Map.Map;
 
 /**

@@ -1,0 +1,25 @@
+CD into assignment folder,
+
+C:.
+├───build
+│   ├───Game
+│   ├───GUI
+│   ├───Main
+│   ├───Map
+│   ├───Players
+│   └───Vehicle
+├───src
+│   ├───Game
+│   ├───GUI
+│   ├───Main
+│   ├───Map
+│   ├───Players
+│   └───Vehicle
+├───UML
+└───Zargo
+
+Then run, 
+
+javac -d build @argfile.txt
+
+Class files are built in the build directory. 

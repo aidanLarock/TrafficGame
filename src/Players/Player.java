@@ -1,6 +1,6 @@
 package Players;
 
-import Vehicle.Vehicle;
+import Vehicle.*;
 
 /**
  * This class player is a type of vehicle object which allows for
