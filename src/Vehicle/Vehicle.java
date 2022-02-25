@@ -1,5 +1,7 @@
 package Vehicle;
 
+import java.util.function.Consumer;
+
 /**
  * An abstract class that provides implementations for the
  * vehicle class. This contains many getter and setter methods
@@ -51,6 +53,8 @@ public abstract class Vehicle {
    *         resptective to health and speed.
    */
   public Integer damage(Integer health, Integer speed) {
+    // Consumer<Integer> this.health = (this.health,this.speed) -> { health -
+    // speed*(1/this.size)}
     this.health -= speed * (1 / this.size);
     return this.health;
   }
