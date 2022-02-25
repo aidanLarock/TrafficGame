@@ -21,11 +21,11 @@ public abstract class Vehicle {
 
   private Integer reputation;
 
-  private Integer health;
+  private Integer health = 100;
 
   private String image;
 
-  private Integer size;
+  private Integer size = 50;
 
   private final Integer MAXREP = 100;
 
@@ -39,6 +39,7 @@ public abstract class Vehicle {
    * @param acceleration Current acceleration of vehicle.
    */
   public void move(Double speed, Double acceleration) {
+    this.speed = speed * acceleration;
   }
 
   /**
@@ -50,7 +51,8 @@ public abstract class Vehicle {
    *         resptective to health and speed.
    */
   public Integer damage(Integer health, Integer speed) {
-    return null;
+    this.health -= speed * (1 / this.size);
+    return this.health;
   }
 
   /**
@@ -59,6 +61,7 @@ public abstract class Vehicle {
    * @param reputation the reputation to be set.
    */
   public void setReputation(Integer reputation) {
+    this.reputation = reputation;
   }
 
   /**
@@ -67,7 +70,7 @@ public abstract class Vehicle {
    * @return the string path of the image location.
    */
   public String getImage() {
-    return null;
+    return image;
   }
 
   /**
@@ -76,7 +79,7 @@ public abstract class Vehicle {
    * @return the most current health of the vehicle.
    */
   public Integer getHealth() {
-    return null;
+    return health;
   }
 
   /**
@@ -86,7 +89,7 @@ public abstract class Vehicle {
    * @return the current reputation from the vehicle.
    */
   public Integer getReputation() {
-    return null;
+    return reputation;
   }
 
   /**
@@ -96,7 +99,7 @@ public abstract class Vehicle {
    *         is going.
    */
   public Double getSpeed() {
-    return null;
+    return speed;
   }
 
   /**
@@ -106,7 +109,7 @@ public abstract class Vehicle {
    * @return the acceleration of the vehicle.
    */
   public Double getAcceleration() {
-    return null;
+    return acceleration;
   }
 
 }
