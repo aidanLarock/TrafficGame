@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.Random;
+
 import Vehicle.Vehicle;
 
 /**
@@ -19,6 +21,8 @@ class Gamble {
 
   private final Integer SEED = 12345;
 
+  private Random generator = new Random(SEED);
+
   /**
    * This method simply generates a vehicle that won the dice roll
    * from the list of vehicle(s) given.
@@ -26,7 +30,11 @@ class Gamble {
    * @param vehicle a vehicle to be tested.
    * @return The vehicle that won the dice roll.
    */
-  Vehicle rolldice(Vehicle vehicle) {
+  Vehicle rolldice(Vehicle a, Vehicle b) {
+    int aRep = a.getReputation();
+    int bRep = b.getReputation();
+    int max = 6;
+    int num = (int) (generator.nextInt(max));
     return null;
   }
 

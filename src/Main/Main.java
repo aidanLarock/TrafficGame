@@ -2,7 +2,10 @@ package Main;
 
 import GUI.Display;
 import Game.Game;
+import Map.Graph;
 import Map.Map;
+import Players.Player;
+import Vehicle.SportsCar;
 
 /**
  * This is the Main class of the game. This class will combine
@@ -68,4 +71,14 @@ public class Main {
    */
   private void input(Game game) {
   }
+
+  public static void main(String[] args) {
+    Game g = new Game();
+    SportsCar sc = new SportsCar();
+    Player madungus = new Player();
+    Graph earth = new Graph();
+
+    g.initializeGame(earth, sc, madungus);
+  }
+
 }

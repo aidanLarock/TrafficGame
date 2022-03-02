@@ -23,11 +23,11 @@ public abstract class Vehicle {
 
   private Integer reputation;
 
-  private Integer health = 100;
+  private Integer health;
 
   private String image;
 
-  private Integer size = 50;
+  private Integer size;
 
   private final Integer MAXREP = 100;
 
@@ -53,8 +53,6 @@ public abstract class Vehicle {
    *         resptective to health and speed.
    */
   public Integer damage(Integer health, Integer speed) {
-    // Consumer<Integer> this.health = (this.health,this.speed) -> { health -
-    // speed*(1/this.size)}
     this.health -= speed * (1 / this.size);
     return this.health;
   }

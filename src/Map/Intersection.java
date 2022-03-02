@@ -14,6 +14,14 @@ import Vehicle.Vehicle;
  */
 public class Intersection implements Map {
 
+  int turns;
+  int lanesAvalible;
+
+  public Intersection(int turns, int lanesAvalible) {
+    this.turns = turns;
+    this.lanesAvalible = lanesAvalible;
+  }
+
   /**
    * This method finds intersections which are connected to the current
    * intersection
@@ -34,7 +42,7 @@ public class Intersection implements Map {
   /**
    * This method gets the possible turns that can be made
    * (some intersections dont allow all moves). Intersections allow a
-   * maximum of 3 moves (left, rightr, straight), and all have a combination
+   * maximum of 3 moves (left, right, straight), and all have a combination
    * of each.
    * 
    * @return the avalible moves an intersection has (Right, Left, Straight)

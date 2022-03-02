@@ -1,8 +1,8 @@
 package Game;
 
-import Vehicle.Vehicle;
+import Vehicle.*;
 import Players.Player;
-import Map.Map;
+import Map.*;
 
 /**
  * This game class creates a Game object containing a Map, Vehicle, and Players
@@ -20,9 +20,13 @@ import Map.Map;
  */
 public class Game {
 
+  Vehicle car;
+
   private Integer time;
 
-  private Map map;
+  private RoadSegment roadSeg;
+
+  private Graph graph;
 
   private Player player;
 
@@ -33,6 +37,7 @@ public class Game {
    * can be used as the main game loop.
    */
   public void updateTime() {
+    time++;
   }
 
   /**
@@ -43,16 +48,22 @@ public class Game {
    * @param car    the car(s) to be initalized.
    * @param player the player(s) to be intialized.
    */
-  public void initializeGame(Map map, Vehicle car, Player player) {
+  public void initializeGame(Graph graph, Vehicle car, Player player) {
+    challenge = new Gamble();
+    this.car = car;
+    this.player = player;
+    this.graph = graph;
+    time = 0;
   }
 
   /**
    * This method will add the vehicle object to the map.
    * 
-   * @param vehicle The vehicle to be added to the map.
-   * @param map     The map the vehicle is being added to.
+   * @param vehicle The vehicle to be added to the road segement.
    */
-  public void addVehicle(Vehicle vehicle, Map map) {
+  public void addVehicle(Vehicle vehicle, int start, int end) {
+    Intersection[] arrIntsec = graph.getIntersections();
+    graph.getRoad(arrIntsec[start], arrIntsec[end]).addVehicle(vehicle);
   }
 
   /**
@@ -62,6 +73,7 @@ public class Game {
    * @param vehicle The vehicle the player is being added to.
    */
   public void addPlayerToVehicle(Player player, Vehicle vehicle) {
+
   }
 
 }

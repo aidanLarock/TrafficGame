@@ -1,5 +1,7 @@
 package Map;
 
+import java.util.ArrayList;
+
 import Vehicle.Vehicle;
 
 /**
@@ -14,11 +16,36 @@ import Vehicle.Vehicle;
  */
 public class RoadSegment implements Map {
 
+  ArrayList<Vehicle> listVehicles;
+
+  Intersection start;
+
+  Intersection end;
+
   private Integer length;
 
   private Integer density;
 
   private Integer numLanes;
+
+  public RoadSegment(int length, int density, int numLanes) {
+    this.length = length;
+    this.density = density;
+    this.numLanes = numLanes;
+    listVehicles = null;
+  }
+
+  public ArrayList<?> getList() {
+    return listVehicles;
+  }
+
+  /**
+   * 
+   * @param e
+   */
+  public void addVehicle(Vehicle e) {
+    this.listVehicles.add(e);
+  }
 
   /**
    * This method gets the length of a road segment
@@ -26,7 +53,7 @@ public class RoadSegment implements Map {
    * @return road segment length
    */
   Integer getLength() {
-    return null;
+    return this.length;
   }
 
   /**
@@ -35,16 +62,11 @@ public class RoadSegment implements Map {
    * @return vehicle density
    */
   Integer getDensity() {
-    return null;
+    return this.density;
   }
 
-  /**
-   * This method gets the number of lanes a road segment has
-   * 
-   * @return number of lanes
-   */
-  Integer getNumberLanes() {
-    return null;
+  void setDensity(int density) {
+    this.density = density;
   }
 
   /**
@@ -54,7 +76,27 @@ public class RoadSegment implements Map {
    * @return integer number of lanes avalible
    */
   public Integer lanesAvalible() {
-    return null;
+    return this.numLanes;
+  }
+
+  /**
+   * 
+   * @param numLanes
+   */
+  void lanesAvalible(int numLanes) {
+    this.numLanes = numLanes;
+  }
+
+  /**
+   * This method creates a road segment from a start and end location
+   * from two given intersections.
+   * 
+   * @param start type intersection to start from.
+   * @param end   type intersection end at.
+   */
+  void createIntersection(Intersection start, Intersection end) {
+    this.start = start;
+    this.end = end;
   }
 
   /**
