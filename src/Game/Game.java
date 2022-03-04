@@ -44,7 +44,7 @@ public class Game {
    * This method initializes the game and intiates the variables for use and
    * can be used in the main game loop.
    * 
-   * @param map    the map the initalized.
+   * @param graph  the graph the initalized.
    * @param car    the car(s) to be initalized.
    * @param player the player(s) to be intialized.
    */
@@ -54,12 +54,17 @@ public class Game {
     this.player = player;
     this.graph = graph;
     time = 0;
+
+    graph.loadMap();
+
   }
 
   /**
    * This method will add the vehicle object to the map.
    * 
    * @param vehicle The vehicle to be added to the road segement.
+   * @param start   The starting number of intersection to add vehicle
+   * @param end     The ending number of intersection to add vehicle
    */
   public void addVehicle(Vehicle vehicle, int start, int end) {
     Intersection[] arrIntsec = graph.getIntersections();

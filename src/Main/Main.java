@@ -73,12 +73,14 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    Game g = new Game();
+    Game game = new Game();
     SportsCar sc = new SportsCar();
     Player madungus = new Player();
-    Graph earth = new Graph();
+    Graph graph = new Graph();
 
-    g.initializeGame(earth, sc, madungus);
+    game.initializeGame(graph, sc, madungus);
+    game.addVehicle(sc, 0, 1);
+    System.out.println("");
   }
 
 }

@@ -36,9 +36,8 @@ public class Graph {
   /**
    * Loads and stores the adjacency matrix used for the graph.
    * 
-   * @param inter The adjacency matrix of type Integer.
    */
-  public void loadMap(Intersection[][] intersection) {
+  public void loadMap() {
     try {
       File map = FILE;
       Scanner myReader = new Scanner(map);
