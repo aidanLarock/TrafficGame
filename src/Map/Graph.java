@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Players.Player;
+
 /**
  * The class Graph stores and loads the graph of the
  * Map using an adjacency matrix. Can also get a
@@ -33,6 +35,18 @@ public class Graph {
 
   Integer numInter;
 
+  public RoadSegment[] possibleTurns(int end) {
+    int j = 0;
+    RoadSegment[] t = new RoadSegment[3];
+    for (int i = 0; i < this.road[end].length; i++) {
+      RoadSegment temp = this.road[end][i];
+      if (temp != null) {
+        t[j] = temp;
+      }
+    }
+    return t;
+  }
+
   /**
    * Loads and stores the adjacency matrix used for the graph.
    * 
@@ -53,7 +67,7 @@ public class Graph {
         for (int j = 0; j < sizeY; j++) {
           int value = myReader.nextInt();
           if (value > 0) {
-            RoadSegment roadSeg = new RoadSegment(value, 0, value / 2);
+            RoadSegment roadSeg = new RoadSegment(value * 2, value, j);
             roadSeg.createIntersection(this.intersection[i], this.intersection[j]);
             this.road[i][j] = roadSeg;
           }
@@ -97,8 +111,10 @@ public class Graph {
     RoadSegment theRoad = null;
     for (int i = 0; i < this.sizeX; i++) {
       for (int j = 0; j < this.sizeY; j++) {
-        if (this.road[i][j].start == start && this.road[i][j].end == end) {
-          theRoad = this.road[i][j];
+        if (null != this.road[i][j]) {
+          if (this.road[i][j].start == start && this.road[i][j].end == end) {
+            theRoad = this.road[i][j];
+          }
         }
       }
     }
@@ -107,6 +123,10 @@ public class Graph {
     } catch (Exception e) {
       return null;
     }
+  }
+
+  public void changeRoad(Player p, RoadSegment road) {
+
   }
 
 }

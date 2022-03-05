@@ -23,11 +23,12 @@ public class Intersection implements Map {
   }
 
   /**
-   * This method finds intersections which are connected to the current
+   * This method finds roads which are connected to the current
    * intersection
-   * This allows for the engine to know what intersections are directly connected
+   * This allows for the engine to know what roads are directly connected
    */
-  private void findNextNodes() {
+  private void findNextRoads() {
+
   }
 
   /**
@@ -47,8 +48,8 @@ public class Intersection implements Map {
    * 
    * @return the avalible moves an intersection has (Right, Left, Straight)
    */
-  public Turns getRoadTurns() {
-    return null;
+  public int getRoadTurns() {
+    return this.turns;
   }
 
   /**

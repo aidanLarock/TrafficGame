@@ -28,6 +28,6 @@ public interface Map {
    * @param lane lane to move vehicle into
    * @param who  vehcile to move
    */
-  public void move(Integer lane, Vehicle who);
+  // public void move(Integer lane, Vehicle who);
 
 }

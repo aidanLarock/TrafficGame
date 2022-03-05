@@ -17,8 +17,6 @@ import Vehicle.Vehicle;
  */
 class Gamble {
 
-  private Vehicle vehicle;
-
   private final Integer SEED = 12345;
 
   private Random generator = new Random(SEED);
@@ -31,11 +29,18 @@ class Gamble {
    * @return The vehicle that won the dice roll.
    */
   Vehicle rolldice(Vehicle a, Vehicle b) {
+    Vehicle v;
     int aRep = a.getReputation();
     int bRep = b.getReputation();
-    int max = 6;
-    int num = (int) (generator.nextInt(max));
-    return null;
+    int aDMG = a.damage();
+    int bDMG = b.damage();
+    int numA = (int) (generator.nextInt(aRep));
+    int numB = (int) (generator.nextInt(bRep));
+    a.setHealth(a.getHealth() - aDMG - bDMG);
+    b.setHealth(b.getHealth() - aDMG - bDMG);
+    v = (numA > numB) ? a : b;
+    v.setReputation(v.getReputation() + 30);
+    return v;
   }
 
 }

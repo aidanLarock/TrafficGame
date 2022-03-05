@@ -30,6 +30,10 @@ public class Main {
 
   private Map map;
 
+  Main() {
+
+  }
+
   /**
    * Main driver function that runs the game and applies
    * the updates the GUI.
@@ -75,11 +79,15 @@ public class Main {
   public static void main(String[] args) {
     Game game = new Game();
     SportsCar sc = new SportsCar();
-    Player madungus = new Player();
     Graph graph = new Graph();
 
+    Player madungus = new Player("Adam", sc);
+
     game.initializeGame(graph, sc, madungus);
-    game.addVehicle(sc, 0, 1);
+    game.addPlayer(madungus, 0, 1, 0);
+    madungus.moveIntersection(graph);
+    madungus.changeLane();
+
     System.out.println("");
   }
 

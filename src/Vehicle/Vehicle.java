@@ -2,6 +2,8 @@ package Vehicle;
 
 import java.util.function.Consumer;
 
+import Map.RoadSegment;
+
 /**
  * An abstract class that provides implementations for the
  * vehicle class. This contains many getter and setter methods
@@ -33,6 +35,8 @@ public abstract class Vehicle {
 
   private final Integer MINREP = 1;
 
+  private RoadSegment road;
+
   /**
    * This method moves a vechicle by a unit
    * respective to speed and acceleration.
@@ -40,20 +44,21 @@ public abstract class Vehicle {
    * @param speed        Current speed of vehicle.
    * @param acceleration Current acceleration of vehicle.
    */
-  public void move(Double speed, Double acceleration) {
-    this.speed = speed * acceleration;
+  public void move(RoadSegment road) {
+    this.speed = this.speed * this.acceleration;
+    // road.move(this);
+    // move up to next road spot
   }
 
   /**
-   * Calculates the damage
+   * Calculates the damage output
    * 
-   * @param health the current health of the vehicle.
-   * @param speed  the current speed of the vehicle.
+   * @param speed the current speed of the vehicle.
    * @return The respective damage calculation carried out
    *         resptective to health and speed.
    */
-  public Integer damage(Integer health, Integer speed) {
-    this.health -= speed * (1 / this.size);
+  public Integer damage() {
+    this.health = (int) (this.speed * (1 / this.size));
     return this.health;
   }
 
@@ -85,6 +90,14 @@ public abstract class Vehicle {
   }
 
   /**
+   * This method sets the current health of the vehicle.
+   * 
+   */
+  public void setHealth(int health) {
+    this.health = health;
+  }
+
+  /**
    * This method simply gets the reputation for the
    * current vehicle.
    * 
@@ -112,6 +125,14 @@ public abstract class Vehicle {
    */
   public Double getAcceleration() {
     return acceleration;
+  }
+
+  public RoadSegment getRoad() {
+    return this.road;
+  }
+
+  public void updateRoad(RoadSegment road) {
+    this.road = road;
   }
 
 }

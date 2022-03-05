@@ -1,8 +1,14 @@
 package Map;
 
-import java.util.ArrayList;
-
 import Vehicle.Vehicle;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingDeque;
+
+import Players.Player;
 
 /**
  * The class RoadSegment stores the information of a road (edge between
@@ -16,11 +22,13 @@ import Vehicle.Vehicle;
  */
 public class RoadSegment implements Map {
 
-  ArrayList<Vehicle> listVehicles;
+  private ArrayList<LinkedList<Player>> playerLanes;
 
   Intersection start;
 
   Intersection end;
+
+  private Integer endIntersection;
 
   private Integer length;
 
@@ -28,23 +36,77 @@ public class RoadSegment implements Map {
 
   private Integer numLanes;
 
-  public RoadSegment(int length, int density, int numLanes) {
+  public RoadSegment(int length, int numLanes, int endIntersection) {
     this.length = length;
-    this.density = density;
     this.numLanes = numLanes;
-    listVehicles = null;
+    this.endIntersection = endIntersection;
+
+    playerLanes = new ArrayList<>();
+
+    for (int i = 0; i < numLanes; i++) {
+      playerLanes.add(new LinkedList<Player>());
+    }
   }
 
-  public ArrayList<?> getList() {
-    return listVehicles;
+  public ArrayList<?> getPlayerLanes() {
+    return playerLanes;
   }
 
   /**
    * 
-   * @param e
+   * @param num
+   * @return
    */
-  public void addVehicle(Vehicle e) {
-    this.listVehicles.add(e);
+  public LinkedList<Player> getLane(int num) {
+    return playerLanes.get(num);
+  }
+
+  // changes vehicles lane into lane
+  // input player, int
+  public void changeLane(Player e, int d) {
+    int x = 0;
+    int y = 0;
+    for (int i = 0; i < playerLanes.size(); i++) {
+      LinkedList<Player> pq = playerLanes.get(i);
+      x = pq.indexOf(e);
+      y = i;
+      if (x != -1) {
+        break;
+      }
+    }
+    if (d != 0) {
+      Player temp = playerLanes.get(y).get(x);
+      playerLanes.get(y).remove(x);
+      playerLanes.get(y + d).add(x, temp);
+    }
+  }
+
+  /**
+   * Get the head player from a lane
+   * 
+   * @param e The player to poll
+   * @param l The lane num to check
+   * @return The polled player.
+   */
+  public Player pollPlayer(Player e, int l) {
+    return playerLanes.get(l).poll();
+  }
+
+  public int getEndIntersection() {
+    return this.endIntersection;
+  }
+
+  /**
+   * Add the player to the road segement at a specific lane.
+   * 
+   * @param e   the player to be added.
+   * @param num the lane number to be added.
+   */
+  public void addPlayer(Player e, int num) {
+    if (playerLanes.get(num).add(e)) {
+      System.out.println("Great Success!");
+    } else
+      System.out.println("At capacity!");
   }
 
   /**
@@ -57,25 +119,21 @@ public class RoadSegment implements Map {
   }
 
   /**
-   * This method gets the number of cars that are on the road segment
-   * 
-   * @return vehicle density
-   */
-  Integer getDensity() {
-    return this.density;
-  }
-
-  void setDensity(int density) {
-    this.density = density;
-  }
-
-  /**
    * sends an integer value of the number of lanes that are avalible in a road or
    * intersection
    * 
    * @return integer number of lanes avalible
    */
   public Integer lanesAvalible() {
+    return this.numLanes;
+  }
+
+  /**
+   * finds the player withing
+   * 
+   * @return spot of vehicle in array
+   */
+  public Integer findPlayer() {
     return this.numLanes;
   }
 
@@ -105,7 +163,8 @@ public class RoadSegment implements Map {
    * @param lane lane to move vehicle into
    * @param who  vehcile to move
    */
-  public void move(Integer lane, Vehicle who) {
+  public void moveLane(Vehicle who) {
+    // who.get
   }
 
 }

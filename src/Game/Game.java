@@ -37,6 +37,7 @@ public class Game {
    * can be used as the main game loop.
    */
   public void updateTime() {
+
     time++;
   }
 
@@ -62,23 +63,14 @@ public class Game {
   /**
    * This method will add the vehicle object to the map.
    * 
-   * @param vehicle The vehicle to be added to the road segement.
-   * @param start   The starting number of intersection to add vehicle
-   * @param end     The ending number of intersection to add vehicle
+   * @param player The vehicle to be added to the road segement.
+   * @param start  The starting number of intersection to add vehicle.
+   * @param end    The ending number of intersection to add vehicle.
+   * @param num    The lane number to be added starts at 0.
    */
-  public void addVehicle(Vehicle vehicle, int start, int end) {
+  public void addPlayer(Player player, int start, int end, int num) {
     Intersection[] arrIntsec = graph.getIntersections();
-    graph.getRoad(arrIntsec[start], arrIntsec[end]).addVehicle(vehicle);
+    graph.getRoad(arrIntsec[start], arrIntsec[end]).addPlayer(player, num);
+    player.updateRoad(graph.getRoad(arrIntsec[start], arrIntsec[end]));
   }
-
-  /**
-   * This method adds the player to the vehicle.
-   * 
-   * @param player  The player to be added to the vehicle.
-   * @param vehicle The vehicle the player is being added to.
-   */
-  public void addPlayerToVehicle(Player player, Vehicle vehicle) {
-
-  }
-
 }
