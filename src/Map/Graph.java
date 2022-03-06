@@ -42,6 +42,7 @@ public class Graph {
       RoadSegment temp = this.road[end][i];
       if (temp != null) {
         t[j] = temp;
+        j++;
       }
     }
     return t;

@@ -84,9 +84,11 @@ public class Main {
     Player madungus = new Player("Adam", sc);
 
     game.initializeGame(graph, sc, madungus);
+    System.out.println("Add player");
     game.addPlayer(madungus, 0, 1, 0);
-    madungus.moveIntersection(graph);
     madungus.changeLane();
+    System.out.println("Changing intersection");
+    madungus.moveIntersection(graph);
 
     System.out.println("");
   }

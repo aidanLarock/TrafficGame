@@ -20,6 +20,7 @@ public class Player {
   private Graph g;
   private Vehicle type;
   private String name;
+  static Scanner scan;
 
   public Player(String name, Vehicle type) {
     this.name = name;
@@ -49,6 +50,7 @@ public class Player {
   public void moveIntersection(Graph g) {
     RoadSegment newRoad = null;
     RoadSegment road = type.getRoad();
+    road.pollPlayer(this, 1);
     int laneTurn = confirm();
     int end = road.getEndIntersection();
     RoadSegment[] r = g.possibleTurns(end);
@@ -56,7 +58,6 @@ public class Player {
       switch (laneTurn) {
         case -1:
           newRoad = r[0];
-          // r[0].addPlayer(this, 0);
           break;
         case 0:
           newRoad = r[1];
@@ -93,15 +94,17 @@ public class Player {
   public int confirm() {
     System.out.println("Enter a movement command: ");
     System.out.println("-1 left, 0 straight, 1 right");
-    Scanner scan = new Scanner(System.in);
-    int move = 0;
+
     try {
-      move = scan.nextInt();
+      scan = new Scanner(System.in);
+      int move = scan.nextInt();
+      scan.nextLine();
+      // scan.next();
+      return move;
     } catch (Exception e) {
       System.out.println("You fool a number!");
     }
-    scan.close();
-    return move;
+    return 0;
   }
 
   public void updateRoad(RoadSegment road) {
