@@ -29,7 +29,7 @@ public abstract class Vehicle {
 
   private String image;
 
-  private Integer size;
+  private Integer size = 1;
 
   private final Integer MAXREP = 100;
 
@@ -133,6 +133,14 @@ public abstract class Vehicle {
 
   public void updateRoad(RoadSegment road) {
     this.road = road;
+  }
+
+  public void setSize(int size) {
+    this.size = size;
+  }
+
+  public int getSize() {
+    return size;
   }
 
 }

@@ -89,8 +89,7 @@ public class Main {
     // madungus.changeLane();
     // System.out.println("Changing intersection");
     // madungus.moveIntersection(graph);
-    graph.updateTimeSegments();
-
+    game.updateTime();
     System.out.println("");
   }
 

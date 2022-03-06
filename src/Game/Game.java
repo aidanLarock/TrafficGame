@@ -37,7 +37,7 @@ public class Game {
    * can be used as the main game loop.
    */
   public void updateTime() {
-
+    graph.updateTimeSegments();
     time++;
   }
 

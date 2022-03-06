@@ -32,19 +32,21 @@ public class RoadSegment implements Map {
 
   private Integer length;
 
-  private Integer density;
-
   private Integer numLanes;
+
+  private int capacities[];
 
   public RoadSegment(int length, int numLanes, int endIntersection) {
     this.length = length;
     this.numLanes = numLanes;
     this.endIntersection = endIntersection;
+    capacities = new int[numLanes];
 
     playerLanes = new ArrayList<>();
 
     for (int i = 0; i < numLanes; i++) {
       playerLanes.add(new LinkedList<Player>());
+      capacities[i] = length;
     }
   }
 
@@ -53,9 +55,29 @@ public class RoadSegment implements Map {
   }
 
   /**
+   * Returns capacities for each lane.
    * 
-   * @param num
-   * @return
+   * @return a 1d array of capacities for each lane.
+   */
+  public int[] getCapacities() {
+    return capacities;
+  }
+
+  /**
+   * Updates the capacities at a lane.
+   * 
+   * @param l    the lane in question.
+   * @param size positive or negative of size update.
+   */
+  private void updateCapacities(int l, int size) {
+    capacities[l] = capacities[l] + size;
+  }
+
+  /**
+   * This method retrieves the list of players on the lane.
+   * 
+   * @param num the lane number in question.
+   * @return a linkedlist of players to add.
    */
   public LinkedList<Player> getLane(int num) {
     return playerLanes.get(num);
@@ -78,6 +100,8 @@ public class RoadSegment implements Map {
       Player temp = playerLanes.get(y).get(x);
       playerLanes.get(y).remove(x);
       playerLanes.get(y + d).add(x, temp);
+      updateCapacities(y, temp.getVehicle().getSize());
+      updateCapacities(y + d, -temp.getVehicle().getSize());
     }
   }
 
@@ -105,6 +129,7 @@ public class RoadSegment implements Map {
   public void addPlayer(Player e, int num) {
     if (e != null) {
       if (playerLanes.get(num).add(e)) {
+        updateCapacities(num, -e.getVehicle().getSize());
         System.out.println("Player added: " + e.getName() + ", Great Success!");
       } else
         System.out.println("At capacity!");
