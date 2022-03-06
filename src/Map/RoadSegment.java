@@ -103,10 +103,15 @@ public class RoadSegment implements Map {
    * @param num the lane number to be added.
    */
   public void addPlayer(Player e, int num) {
-    if (playerLanes.get(num).add(e)) {
-      System.out.println("Great Success!");
-    } else
-      System.out.println("At capacity!");
+    if (e != null) {
+      if (playerLanes.get(num).add(e)) {
+        System.out.println("Great Success!");
+      } else
+        System.out.println("At capacity!");
+    } else {
+      playerLanes.get(num).add(e);
+    }
+
   }
 
   /**

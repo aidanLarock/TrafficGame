@@ -86,9 +86,10 @@ public class Main {
     game.initializeGame(graph, sc, madungus);
     System.out.println("Add player");
     game.addPlayer(madungus, 0, 1, 0);
-    madungus.changeLane();
-    System.out.println("Changing intersection");
-    madungus.moveIntersection(graph);
+    // madungus.changeLane();
+    // System.out.println("Changing intersection");
+    // madungus.moveIntersection(graph);
+    graph.updateTimeSegments();
 
     System.out.println("");
   }

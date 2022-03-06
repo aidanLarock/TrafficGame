@@ -1,13 +1,8 @@
 package Map;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import Players.Player;
 
 /**
  * The class Graph stores and loads the graph of the
@@ -35,9 +30,31 @@ public class Graph {
 
   Integer numInter;
 
+  /**
+   * Updates the player lane with nullo objects to "move forward" in the
+   * player lane.
+   */
+  public void updateTimeSegments() {
+    for (int i = 0; i < road.length; i++) {
+      for (int j = 0; j < road[i].length; j++) {
+        if (road[i][j] != null) {
+          for (int j2 = 0; j2 < road[i][j].getPlayerLanes().size(); j2++) {
+            road[i][j].addPlayer(null, j2);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Returns the possible turns a car can make at the end of an intersection.
+   * 
+   * @param end The ending road segement the car is on.
+   * @return a
+   */
   public RoadSegment[] possibleTurns(int end) {
     int j = 0;
-    RoadSegment[] t = new RoadSegment[3];
+    RoadSegment[] t = new RoadSegment[this.road[end].length];
     for (int i = 0; i < this.road[end].length; i++) {
       RoadSegment temp = this.road[end][i];
       if (temp != null) {
@@ -125,9 +142,4 @@ public class Graph {
       return null;
     }
   }
-
-  public void changeRoad(Player p, RoadSegment road) {
-
-  }
-
 }

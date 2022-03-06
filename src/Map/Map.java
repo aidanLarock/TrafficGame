@@ -22,12 +22,4 @@ public interface Map {
    */
   public Integer lanesAvalible();
 
-  /**
-   * moves a vehicle into a specified lane
-   * 
-   * @param lane lane to move vehicle into
-   * @param who  vehcile to move
-   */
-  // public void move(Integer lane, Vehicle who);
-
 }

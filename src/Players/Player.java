@@ -99,7 +99,6 @@ public class Player {
       scan = new Scanner(System.in);
       int move = scan.nextInt();
       scan.nextLine();
-      // scan.next();
       return move;
     } catch (Exception e) {
       System.out.println("You fool a number!");
