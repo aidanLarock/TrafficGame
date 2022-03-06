@@ -105,7 +105,7 @@ public class RoadSegment implements Map {
   public void addPlayer(Player e, int num) {
     if (e != null) {
       if (playerLanes.get(num).add(e)) {
-        System.out.println("Great Success!");
+        System.out.println("Player added: " + e.getName() + ", Great Success!");
       } else
         System.out.println("At capacity!");
     } else {

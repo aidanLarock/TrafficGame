@@ -22,6 +22,10 @@ public class Player {
   private String name;
   static Scanner scan;
 
+  public String getName() {
+    return name;
+  }
+
   public Player(String name, Vehicle type) {
     this.name = name;
     this.type = type;
