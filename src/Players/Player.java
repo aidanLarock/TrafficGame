@@ -1,6 +1,5 @@
 package Players;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
@@ -18,6 +17,7 @@ import Map.*;
  * @see Game
  * @see Vehicle
  */
+
 public class Player {
 
   private Graph g;
@@ -71,8 +71,7 @@ public class Player {
    * @return The turns possible at a intersection
    * @throws Exception
    */
-  public Turns moveIntersection(Graph g) throws Exception {
-    Turns turn = null;
+  public void moveIntersection(Graph g) throws Exception {
     RoadSegment newRoad = null;
     RoadSegment road = type.getRoad();
     road.pollPlayer(this, 1);
@@ -83,15 +82,12 @@ public class Player {
       switch (laneTurn) {
         case -1:
           newRoad = r[0];
-          turn = Turns.LEFT;
           break;
         case 0:
           newRoad = r[1];
-          turn = Turns.STRAIGHT;
           break;
         case 1:
           newRoad = r[2];
-          turn = Turns.RIGHT;
           break;
         default:
 
@@ -101,7 +97,6 @@ public class Player {
     }
     newRoad.addPlayer(this, 0);
     this.type.updateRoad(newRoad);
-    return turn;
   }
 
   /**
@@ -118,17 +113,15 @@ public class Player {
    * Moves the car into a new lane
    * 
    */
-  public Turns changeLane() {
-    Turns turn = null;
+  public void changeLane() {
     int laneTurn = confirm();
     RoadSegment road = type.getRoad();
     try {
       road.changeLane(this, laneTurn);
-      turn = (laneTurn == -1) ? Turns.LEFT : (laneTurn == 0) ? Turns.STRAIGHT : Turns.RIGHT;
+
     } catch (Exception e) {
       System.out.println("Invalid lane");
     }
-    return turn;
   }
 
   /**
@@ -136,7 +129,12 @@ public class Player {
    */
   public int confirm() {
     System.out.println("Enter a movement command: ");
-    System.out.println("-1 left, 0 straight, 1 right");
+    int k = -1;
+    for (Turns t : Turns.values()) {
+      System.out.print(t + " " + k + " ");
+      k++;
+    }
+    // System.out.println("-1 left, 0 straight, 1 right");
 
     try {
       scan = new Scanner(System.in);
@@ -153,55 +151,56 @@ public class Player {
     type.updateRoad(road);
   }
 
-  Player AI = new Player(name, type) {
-    private Random rng = new Random();
-    String name;
-    Vehicle type;
+  public Player makeAIPlayer(String name, Vehicle type) {
+    Player AI = new Player(name, type) {
+      private Random rng = new Random();
+      String name;
+      Vehicle type;
 
-    @Override
-    public Turns changeLane() {
-      Turns turn = null;
-      int laneTurn = rng.nextInt(2) - 1; // rand num
-      turn = (laneTurn == -1) ? Turns.LEFT : (laneTurn == 0) ? Turns.STRAIGHT : Turns.RIGHT;
-      RoadSegment road = type.getRoad();
-      if (asserting(laneTurn) == true) {
-        road.changeLane(this, laneTurn);
-      }
-      return turn;
-    }
-
-    @Override
-    public Turns moveIntersection(Graph g) {
-      Turns turn = null;
-      RoadSegment road = type.getRoad();
-      road.pollPlayer(this, 1);
-      int laneTurn = rng.nextInt(2) - 1; // rand num
-      if (asserting(laneTurn) == true) {
-        int end = road.getEndIntersection();
-        RoadSegment[] r = g.possibleTurns(end);
-        RoadSegment newRoad = (laneTurn == -1) ? r[0] : (laneTurn == 0) ? r[1] : r[2];
-        turn = (laneTurn == -1) ? Turns.LEFT : (laneTurn == 0) ? Turns.STRAIGHT : Turns.RIGHT;
-        newRoad.addPlayer(this, 0);
-        this.type.updateRoad(newRoad);
-        return turn;
-      }
-      return null;
-    }
-
-    /**
-     * Check if the AI can change lanes.
-     * 
-     * @return a boolean if the AI can change lanes.
-     */
-    public boolean asserting(int turn) {
-      RoadSegment road = type.getRoad();
-      if (this.type.getLane() != turn) {
-        LinkedList<Player> pnext = road.getLane(turn);
-        if (pnext.get(turn) == null) {
-          return true;
+      @Override
+      public void changeLane() {
+        int laneTurn = rng.nextInt(2) - 1; // rand num
+        RoadSegment road = type.getRoad();
+        if (asserting(laneTurn) == true) {
+          road.changeLane(this, laneTurn);
         }
       }
-      return false;
-    }
-  };
+
+      @Override
+      public void moveIntersection(Graph g) throws Exception {
+        RoadSegment road = type.getRoad();
+        road.pollPlayer(this, 1);
+        int laneTurn = rng.nextInt(2) - 1; // rand num
+        if (asserting(laneTurn) == true) {
+          int end = road.getEndIntersection();
+          RoadSegment[] r = g.possibleTurns(end);
+          RoadSegment newRoad = (laneTurn == -1) ? r[0] : (laneTurn == 0) ? r[1] : r[2];
+          newRoad.addPlayer(this, 0);
+          this.type.updateRoad(newRoad);
+        }
+      }
+
+      /**
+       * Check if the AI can change lanes.
+       *
+       * @return a boolean if the AI can change lanes.
+       */
+      @Override
+      public boolean asserting(int turn) {
+        RoadSegment road = type.getRoad();
+        if (this.type.getLane() != turn) {
+          LinkedList<Player> pnext = road.getLane(turn);
+          if (pnext.get(turn) == null) {
+            return true;
+          }
+        }
+        return false;
+      }
+    };
+    return AI;
+  }
+
+  public boolean asserting(int turn) {
+    return false;
+  }
 }

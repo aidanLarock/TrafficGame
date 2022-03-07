@@ -6,7 +6,7 @@ import GUI.Display;
 import Game.Game;
 import Map.Graph;
 import Map.Map;
-import Players.Player;
+import Players.*;
 import Vehicle.SportsCar;
 
 /**

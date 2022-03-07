@@ -1,7 +1,7 @@
 package Game;
 
 import Vehicle.*;
-import Players.Player;
+import Players.*;
 import Map.*;
 
 /**
@@ -35,7 +35,11 @@ public class Game {
    * can be used as the main game loop.
    */
   public void updateTime() {
-    graph.updateTimeSegments();
+    try {
+      graph.updateTimeSegments();
+    } catch (Exception e) {
+      System.out.println("Please add a player first!");
+    }
     time++;
   }
 

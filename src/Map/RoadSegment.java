@@ -3,7 +3,7 @@ package Map;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import Players.Player;
+import Players.*;
 
 /**
  * The class RoadSegment stores the information of a road (edge between
