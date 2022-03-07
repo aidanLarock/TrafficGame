@@ -6,10 +6,8 @@ import GUI.Display;
 import Game.Game;
 import Map.Graph;
 import Map.Map;
-import Map.Turns;
 import Players.Player;
 import Vehicle.SportsCar;
-import Vehicle.Vehicle;
 
 /**
  * This is the Main class of the game. This class will combine
@@ -136,7 +134,7 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    new Main();
+    Main m = new Main();
   }
 
 }

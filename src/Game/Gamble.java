@@ -17,10 +17,6 @@ import Vehicle.Vehicle;
  */
 class Gamble {
 
-  private final Integer SEED = 12345;
-
-  private Random generator = new Random(SEED);
-
   /**
    * This method simply generates a vehicle that won the dice roll
    * from the list of vehicle(s) given.
@@ -28,19 +24,33 @@ class Gamble {
    * @param vehicle a vehicle to be tested.
    * @return The vehicle that won the dice roll.
    */
-  Vehicle rolldice(Vehicle a, Vehicle b) {
-    Vehicle v;
-    int aRep = a.getReputation();
-    int bRep = b.getReputation();
-    int aDMG = a.damage();
-    int bDMG = b.damage();
-    int numA = (int) (generator.nextInt(aRep));
-    int numB = (int) (generator.nextInt(bRep));
-    a.setHealth(a.getHealth() - aDMG - bDMG);
-    b.setHealth(b.getHealth() - aDMG - bDMG);
-    v = (numA > numB) ? a : b;
-    v.setReputation(v.getReputation() + 30);
+  Vehicle crash(Vehicle a, Vehicle b) {
+    Vehicle v = rollDice(a, b);
     return v;
+  }
+
+  private Vehicle rollDice(Vehicle a, Vehicle b) {
+    final Integer SEED = 12345;
+    Random generator = new Random(SEED);
+    rollDice rD = (Vehicle x, Vehicle y) -> {
+      Vehicle v;
+      int xRep = x.getReputation();
+      int yRep = y.getReputation();
+      int xDMG = x.damage();
+      int yDMG = y.damage();
+      int numx = (int) (generator.nextInt(xRep));
+      int numy = (int) (generator.nextInt(yRep));
+      x.setHealth(x.getHealth() - xDMG - yDMG);
+      y.setHealth(y.getHealth() - xDMG - yDMG);
+      v = (numx > numy) ? x : y;
+      v.setReputation(v.getReputation() + 30);
+      return v;
+    };
+    return rD.calc(a, b);
+  }
+
+  interface rollDice {
+    Vehicle calc(Vehicle a, Vehicle b);
   }
 
 }

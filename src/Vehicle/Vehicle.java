@@ -37,6 +37,8 @@ public abstract class Vehicle {
 
   private RoadSegment road;
 
+  private int lane;
+
   /**
    * This method moves a vechicle by a unit
    * respective to speed and acceleration.
@@ -146,6 +148,24 @@ public abstract class Vehicle {
   }
 
   /**
+   * Updates the vehicle lane in the road segment
+   * 
+   * @param lane lane segment to update to.
+   */
+  public void updateLane(int lane) {
+    this.lane = lane;
+  }
+
+  /**
+   * Gets the lane the vehicle is in.
+   * 
+   * @param lane lane the vehcile is in.
+   */
+  public int getLane() {
+    return this.lane;
+  }
+
+  /**
    * Sets the size of a vehicle.
    * 
    * @param size The size to set.
@@ -162,4 +182,5 @@ public abstract class Vehicle {
   public int getSize() {
     return size;
   }
+
 }

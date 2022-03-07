@@ -24,3 +24,22 @@ Then run,
 javac -d build @argfile.txt
 
 Class files are built in the build directory. 
+
+RUNNING
+
+Then cd into build;
+
+cd/build
+
+You should see,
+├───Game
+├───GUI
+├───Main
+├───Map
+├───Players
+└───Vehicle
+each of which contain class files, 
+to run traffic game, once in build directory,
+use command;
+
+java Main.Main

@@ -49,7 +49,7 @@ public class RoadSegment implements Map {
    * 
    * @return the list of player lanes.
    */
-  public ArrayList<?> getPlayerLanes() {
+  public ArrayList<LinkedList<Player>> getPlayerLanes() {
     return playerLanes;
   }
 
@@ -106,6 +106,7 @@ public class RoadSegment implements Map {
       playerLanes.get(y + d).add(x, temp);
       updateCapacities(y, temp.getVehicle().getSize());
       updateCapacities(y + d, -temp.getVehicle().getSize());
+      e.setLaneNum(y + d);
     }
   }
 
@@ -139,6 +140,7 @@ public class RoadSegment implements Map {
     if (e != null) {
       if (playerLanes.get(num).add(e)) {
         updateCapacities(num, -e.getVehicle().getSize());
+        e.setLaneNum(num);
         // System.out.println("Player added: " + e.getName() + ", Great Success!");
       } else
         System.out.println("At capacity!");
