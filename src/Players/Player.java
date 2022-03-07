@@ -134,8 +134,6 @@ public class Player {
       System.out.print(t + " " + k + " ");
       k++;
     }
-    // System.out.println("-1 left, 0 straight, 1 right");
-
     try {
       scan = new Scanner(System.in);
       int move = scan.nextInt();

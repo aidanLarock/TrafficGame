@@ -29,6 +29,14 @@ class Gamble {
     return v;
   }
 
+  /**
+   * This method uses a lambda computes a RNG roll to determine a vehicle winner
+   * in the event of a crash
+   * 
+   * @param a Vehicle a in crash
+   * @param b Vehicle b in crash
+   * @return Vehicle winner
+   */
   private Vehicle rollDice(Vehicle a, Vehicle b) {
     final Integer SEED = 12345;
     Random generator = new Random(SEED);

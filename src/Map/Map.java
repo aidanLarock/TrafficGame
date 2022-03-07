@@ -1,7 +1,5 @@
 package Map;
 
-import Vehicle.Vehicle;
-
 /**
  * The class Graph stores and loads the graph of the
  * Map using an adjacency matrix. Can also get a

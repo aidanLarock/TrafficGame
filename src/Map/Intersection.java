@@ -1,7 +1,5 @@
 package Map;
 
-import Vehicle.Vehicle;
-
 /**
  * The class Intersection stores the information on a specific intersection
  * which is a node for the map class. An intersection allows for turning and
