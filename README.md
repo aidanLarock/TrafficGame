@@ -11,7 +11,7 @@ Players control a vehcile and attept to manuver their vheicle around busy street
 
 First, fork the repository. Then, go into your favorite terminal.
   
-    CD into assignment folder,
+   CD into assignment folder,
 
     You should see:
     C:.
@@ -37,3 +37,22 @@ First, fork the repository. Then, go into your favorite terminal.
     javac -d build @argfile.txt
 
     Class files are built in the build directory. 
+
+    RUNNING
+
+    Then cd into build;
+
+    cd/build
+
+    You should see,
+    ├───Game
+    ├───GUI
+    ├───Main
+    ├───Map
+    ├───Players
+    └───Vehicle
+    each of which contain class files, 
+    to run traffic game, once in build directory,
+    use command;
+
+    java Main.Main
