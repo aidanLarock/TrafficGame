@@ -127,20 +127,39 @@ public abstract class Vehicle {
     return acceleration;
   }
 
+  /**
+   * Gets the road that the current vehicle is on.
+   * 
+   * @return The road segment the vehicle is on.
+   */
   public RoadSegment getRoad() {
     return this.road;
   }
 
+  /**
+   * Updates the vehicle location on a road segment.
+   * 
+   * @param road The road segment to update.
+   */
   public void updateRoad(RoadSegment road) {
     this.road = road;
   }
 
+  /**
+   * Sets the size of a vehicle.
+   * 
+   * @param size The size to set.
+   */
   public void setSize(int size) {
     this.size = size;
   }
 
+  /**
+   * Gets the size of the vehicle.
+   * 
+   * @return an integer of the size of the vehicle.
+   */
   public int getSize() {
     return size;
   }
-
 }

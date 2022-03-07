@@ -24,8 +24,6 @@ public class Game {
 
   private Integer time;
 
-  private RoadSegment roadSeg;
-
   private Graph graph;
 
   private Player player;
@@ -55,9 +53,7 @@ public class Game {
     this.player = player;
     this.graph = graph;
     time = 0;
-
     graph.loadMap();
-
   }
 
   /**

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import Players.Player;
+
 /**
  * The class Graph stores and loads the graph of the
  * Map using an adjacency matrix. Can also get a
@@ -29,6 +31,33 @@ public class Graph {
   Integer numRoads;
 
   Integer numInter;
+
+  /**
+   * Checks if the player is at the head of a road segment.
+   * 
+   * @param p The player to check for.
+   * @return A boolean if the player is at the head.
+   */
+  public boolean isPlayerHead(Player p) {
+    for (int i = 0; i < road.length; i++) {
+      for (int j = 0; j < road[i].length; j++) {
+        if (road[i][j] != null) {
+          for (int j2 = 0; j2 < road[i][j].getPlayerLanes().size(); j2++) {
+            Player temp = road[i][j].getLane(j2).peek();
+            if (temp != null) {
+              if (temp.equals(p)) {
+                System.out.println("Player is head");
+                return true;
+              }
+            } else {
+              road[i][j].getLane(j2).poll();
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 
   /**
    * Updates the player lane with nullo objects to "move forward" in the
@@ -72,9 +101,9 @@ public class Graph {
   public void loadMap() {
     try {
       File map = FILE;
-      Scanner myReader = new Scanner(map);
-      sizeX = myReader.nextInt();
-      sizeY = myReader.nextInt();
+      Scanner in = new Scanner(map);
+      sizeX = in.nextInt();
+      sizeY = in.nextInt();
       this.road = new RoadSegment[sizeX][sizeY];
       this.intersection = new Intersection[sizeX];
       for (int i = 0; i < sizeX; i++) {
@@ -83,7 +112,7 @@ public class Graph {
       }
       for (int i = 0; i < sizeX; i++) {
         for (int j = 0; j < sizeY; j++) {
-          int value = myReader.nextInt();
+          int value = in.nextInt();
           if (value > 0) {
             RoadSegment roadSeg = new RoadSegment(value * 2, value, j);
             roadSeg.createIntersection(this.intersection[i], this.intersection[j]);
@@ -91,7 +120,7 @@ public class Graph {
           }
         }
       }
-      myReader.close();
+      in.close();
     } catch (FileNotFoundException e) {
       System.out.println("Couldnt Load File.");
       e.printStackTrace();

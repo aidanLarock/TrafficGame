@@ -1,12 +1,7 @@
 package Map;
 
-import Vehicle.Vehicle;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingDeque;
 
 import Players.Player;
 
@@ -41,7 +36,6 @@ public class RoadSegment implements Map {
     this.numLanes = numLanes;
     this.endIntersection = endIntersection;
     capacities = new int[numLanes];
-
     playerLanes = new ArrayList<>();
 
     for (int i = 0; i < numLanes; i++) {
@@ -50,6 +44,11 @@ public class RoadSegment implements Map {
     }
   }
 
+  /**
+   * Returns the list of player lanes at this road segment.
+   * 
+   * @return the list of player lanes.
+   */
   public ArrayList<?> getPlayerLanes() {
     return playerLanes;
   }
@@ -83,8 +82,13 @@ public class RoadSegment implements Map {
     return playerLanes.get(num);
   }
 
-  // changes vehicles lane into lane
-  // input player, int
+  /**
+   * This method changes the lane of a given player based on
+   * the inputted direction.
+   * 
+   * @param e The player in question.
+   * @param d The direction to switch.
+   */
   public void changeLane(Player e, int d) {
     int x = 0;
     int y = 0;
@@ -116,6 +120,11 @@ public class RoadSegment implements Map {
     return playerLanes.get(l).poll();
   }
 
+  /**
+   * Gets the ending intersection of a road segement.
+   * 
+   * @return the ending intersection for the road.
+   */
   public int getEndIntersection() {
     return this.endIntersection;
   }
@@ -130,7 +139,7 @@ public class RoadSegment implements Map {
     if (e != null) {
       if (playerLanes.get(num).add(e)) {
         updateCapacities(num, -e.getVehicle().getSize());
-        System.out.println("Player added: " + e.getName() + ", Great Success!");
+        // System.out.println("Player added: " + e.getName() + ", Great Success!");
       } else
         System.out.println("At capacity!");
     } else {
@@ -159,42 +168,15 @@ public class RoadSegment implements Map {
   }
 
   /**
-   * finds the player withing
-   * 
-   * @return spot of vehicle in array
-   */
-  public Integer findPlayer() {
-    return this.numLanes;
-  }
-
-  /**
-   * 
-   * @param numLanes
-   */
-  void lanesAvalible(int numLanes) {
-    this.numLanes = numLanes;
-  }
-
-  /**
    * This method creates a road segment from a start and end location
    * from two given intersections.
    * 
    * @param start type intersection to start from.
    * @param end   type intersection end at.
    */
-  void createIntersection(Intersection start, Intersection end) {
+  public void createIntersection(Intersection start, Intersection end) {
     this.start = start;
     this.end = end;
-  }
-
-  /**
-   * moves a vehicle into a specified lane
-   * 
-   * @param lane lane to move vehicle into
-   * @param who  vehcile to move
-   */
-  public void moveLane(Vehicle who) {
-    // who.get
   }
 
 }

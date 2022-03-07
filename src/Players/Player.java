@@ -22,36 +22,44 @@ public class Player {
   private String name;
   static Scanner scan;
 
+  /**
+   * A getter method to get the name of the player as a string.
+   * 
+   * @return The string that owns this player.
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Initilizer to player.
+   * 
+   * @param name The string name that owns this player.
+   * @param type The Vehicle this player owns.
+   */
   public Player(String name, Vehicle type) {
     this.name = name;
     this.type = type;
   }
 
+  /**
+   * Gets the vehicle object owned by the player.
+   * 
+   * @return The vehicle owned by the player.
+   */
   public Vehicle getVehicle() {
     return type;
   }
 
   /**
-   * Allows the player to move a vehicle.
-   */
-  public void moving() {
-    RoadSegment road = type.getRoad();
-    this.type.move(road);
-
-    // lanes avalible = number of lanes we have
-    // need to get current lane
-    // move car to that lane
-  }
-
-  /**
-   * Moves the car through the intersection to a new road segment
+   * Moves intersections and throws an exception if not possible.
    * 
+   * @param g The map of the game.
+   * @return The turns possible at a intersection
+   * @throws Exception
    */
-  public void moveIntersection(Graph g) {
+  public Turns moveIntersection(Graph g) throws Exception {
+    Turns turn = null;
     RoadSegment newRoad = null;
     RoadSegment road = type.getRoad();
     road.pollPlayer(this, 1);
@@ -62,19 +70,35 @@ public class Player {
       switch (laneTurn) {
         case -1:
           newRoad = r[0];
+          turn = Turns.LEFT;
           break;
         case 0:
           newRoad = r[1];
+          turn = Turns.STRAIGHT;
           break;
         case 1:
           newRoad = r[2];
+          turn = Turns.RIGHT;
           break;
+        default:
+
       }
     } catch (Exception e) {
-      System.out.println("Not a Valid Road");
+      throw new Exception("Pick a valid number");
     }
     newRoad.addPlayer(this, 0);
     this.type.updateRoad(newRoad);
+    return turn;
+  }
+
+  /**
+   * The current lane number that the vehicle is on.
+   * 
+   * @return The lane that the vehicle is on.
+   */
+  public int getLaneNumber() {
+    RoadSegment road = type.getRoad();
+    return road.lanesAvalible();
   }
 
   /**

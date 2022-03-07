@@ -23,24 +23,6 @@ public class Intersection implements Map {
   }
 
   /**
-   * This method finds roads which are connected to the current
-   * intersection
-   * This allows for the engine to know what roads are directly connected
-   */
-  private void findNextRoads() {
-
-  }
-
-  /**
-   * This method gets a specfic node from the map
-   * 
-   * @return Intersection
-   */
-  public Intersection getNode() {
-    return null;
-  }
-
-  /**
    * This method gets the possible turns that can be made
    * (some intersections dont allow all moves). Intersections allow a
    * maximum of 3 moves (left, right, straight), and all have a combination
@@ -59,15 +41,6 @@ public class Intersection implements Map {
    * @return integer number of lanes avalible
    */
   public Integer lanesAvalible() {
-    return null;
-  }
-
-  /**
-   * Moves a vehicle into a specified lane
-   * 
-   * @param lane lane to move vehicle into
-   * @param who  vehcile to move
-   */
-  public void move(Integer lane, Vehicle who) {
+    return lanesAvalible;
   }
 }

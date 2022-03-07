@@ -1,11 +1,15 @@
 package Main;
 
+import java.util.Scanner;
+
 import GUI.Display;
 import Game.Game;
 import Map.Graph;
 import Map.Map;
+import Map.Turns;
 import Players.Player;
 import Vehicle.SportsCar;
+import Vehicle.Vehicle;
 
 /**
  * This is the Main class of the game. This class will combine
@@ -26,12 +30,25 @@ public class Main {
 
   private Display gui;
 
-  private Game vehicle;
+  private Graph graph;
 
-  private Map map;
+  private Player player;
 
   Main() {
 
+    game = new Game();
+    graph = new Graph();
+
+    run(game);
+    System.out.println("");
+  }
+
+  private int menu(MenuText mt) {
+    Scanner in = new Scanner(System.in);
+    mt.displayText("0: Quit");
+    mt.displayText("1: Add player");
+    mt.displayText("2: Continue game");
+    return in.nextInt();
   }
 
   /**
@@ -41,56 +58,85 @@ public class Main {
    * @param game The game object to be used in the GUI.
    */
   private void run(Game game) {
+    MenuText mt = (message) -> System.out.println(message);
+    int choice = menu(mt);
+
+    while (choice != 0) {
+      switch (choice) {
+        case 1:
+          Scanner str = new Scanner(System.in);
+          mt.displayText("Adding player...");
+          mt.displayText("Name of player to add: ");
+
+          String temp = str.nextLine();
+          SportsCar sc = new SportsCar();
+          player = new Player(temp, sc);
+
+          mt.displayText("Player added: " + temp);
+          game.initializeGame(graph, sc, player);
+          game.addPlayer(player, 0, 1, 1);
+          choice = 3;
+          break;
+
+        case 2:
+          mt.displayText("Continuing game...");
+          game.updateTime();
+          System.out.println("Open lanes: " + player.getLaneNumber());
+          System.out.println("Change lanes?");
+          player.changeLane();
+
+          if (graph.isPlayerHead(player)) {
+            try {
+              System.out.println("...At intersection...");
+              player.moveIntersection(graph);
+              System.out.println("Changed Intersections...");
+            } catch (Exception e) {
+              mt.displayText("Sike!, we actually can't do that");
+            }
+          }
+          choice = 3;
+          break;
+        default:
+          break;
+      }
+      System.out.println("");
+      System.out.println("");
+      System.out.println("");
+      System.out.println("");
+      choice = menu(mt);
+    }
+    System.out.println("Succesfully quit!");
+
   }
 
   /**
    * Prepares the GUI for the run function.
    * 
    * @param gui The GUI to be used.
+   * @apiNote Used for future versions.
    */
   private void initializeGui(Display gui) {
   }
 
   /**
-   * Updates the map with current vehicles, posistions
-   * and etc.
-   * 
-   * @param map The Map to be updated.
+   * Interface for MenuText Lambda Expression
+   * Prints text to the console
    */
-  private void updateMap(Map map) {
+  interface MenuText {
+    void displayText(String message);
   }
 
   /**
    * Updates the vehicle to the GUI.
    * 
    * @param vehicle The game vehicle at question.
+   * @apiNote Used for future versions.
    */
   private void updateVehicleGui(Game vehicle) {
   }
 
-  /**
-   * This method is the player to game input
-   * 
-   * @param game The input
-   */
-  private void input(Game game) {
-  }
-
   public static void main(String[] args) {
-    Game game = new Game();
-    SportsCar sc = new SportsCar();
-    Graph graph = new Graph();
-
-    Player madungus = new Player("Adam", sc);
-
-    game.initializeGame(graph, sc, madungus);
-    System.out.println("Add player");
-    game.addPlayer(madungus, 0, 1, 0);
-    // madungus.changeLane();
-    // System.out.println("Changing intersection");
-    // madungus.moveIntersection(graph);
-    game.updateTime();
-    System.out.println("");
+    new Main();
   }
 
 }
