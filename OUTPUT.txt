@@ -1,0 +1,84 @@
+0: Quit
+1: Add player
+2: Continue game
+1
+Adding player...
+Name of player to add:
+Guy
+Player added: Guy
+
+
+
+
+0: Quit
+1: Add player
+2: Continue game
+2
+Continuing game...
+Open lanes: 2
+Change lanes?
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 0
+Player is head
+...At intersection...
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 1
+Changed Intersections...
+
+
+
+
+0: Quit
+1: Add player
+2: Continue game
+2
+Continuing game...
+Open lanes: 4
+Change lanes?
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 0
+
+
+
+
+0: Quit
+1: Add player
+2: Continue game
+2
+Continuing game...
+Open lanes: 4
+Change lanes?
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 0
+Player is head
+...At intersection...
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 1
+Changed Intersections...
+
+
+
+
+0: Quit
+1: Add player
+2: Continue game
+2
+Continuing game...
+Open lanes: 6
+Change lanes?
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 0
+Player is head
+...At intersection...
+Enter a movement command:
+LEFT -1 STRAIGHT 0 RIGHT 1 1
+Changed Intersections...
+
+
+
+
+0: Quit
+1: Add player
+2: Continue game
+0
+Succesfully quit!

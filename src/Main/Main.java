@@ -41,11 +41,11 @@ public class Main {
     System.out.println("");
   }
 
-  private int menu(MenuText mt) {
+  private int menu() {
     Scanner in = new Scanner(System.in);
-    mt.displayText("0: Quit");
-    mt.displayText("1: Add player");
-    mt.displayText("2: Continue game");
+    System.out.println("0: Quit");
+    System.out.println("1: Add player");
+    System.out.println("2: Continue game");
     return in.nextInt();
   }
 
@@ -56,28 +56,28 @@ public class Main {
    * @param game The game object to be used in the GUI.
    */
   private void run(Game game) {
-    MenuText mt = (message) -> System.out.println(message);
-    int choice = menu(mt);
+    int choice = menu();
 
     while (choice != 0) {
       switch (choice) {
         case 1:
           Scanner str = new Scanner(System.in);
-          mt.displayText("Adding player...");
-          mt.displayText("Name of player to add: ");
+          System.out.println("Adding player...");
+          System.out.println("Name of player to add: ");
 
           String temp = str.nextLine();
           SportsCar sc = new SportsCar();
           player = new Player(temp, sc);
 
-          mt.displayText("Player added: " + temp);
+          System.out.println("Player added: " + temp);
           game.initializeGame(graph, sc, player);
           game.addPlayer(player, 0, 1, 1);
           choice = 3;
+          // str.close();
           break;
 
         case 2:
-          mt.displayText("Continuing game...");
+          System.out.println("Continuing game...");
           game.updateTime();
           System.out.println("Open lanes: " + player.getLaneNumber());
           System.out.println("Change lanes?");
@@ -89,7 +89,7 @@ public class Main {
               player.moveIntersection(graph);
               System.out.println("Changed Intersections...");
             } catch (Exception e) {
-              mt.displayText("Sike!, we actually can't do that");
+              System.out.println("Sike!, we actually can't do that");
             }
           }
           choice = 3;
@@ -101,7 +101,7 @@ public class Main {
       System.out.println("");
       System.out.println("");
       System.out.println("");
-      choice = menu(mt);
+      choice = menu();
     }
     System.out.println("Succesfully quit!");
 
@@ -114,14 +114,6 @@ public class Main {
    * @apiNote Used for future versions.
    */
   private void initializeGui(Display gui) {
-  }
-
-  /**
-   * Interface for MenuText Lambda Expression
-   * Prints text to the console
-   */
-  interface MenuText {
-    void displayText(String message);
   }
 
   /**

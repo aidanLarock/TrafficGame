@@ -12,7 +12,7 @@ public enum Turns {
 
   LEFT,
 
-  RIGHT,
+  STRAIGHT,
 
-  STRAIGHT;
+  RIGHT;
 }
