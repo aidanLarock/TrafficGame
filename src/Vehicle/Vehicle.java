@@ -49,11 +49,11 @@ public abstract class Vehicle {
   public void move(RoadSegment road) {
     this.speed = this.speed * this.acceleration;
     // road.move(this);
-    // move up to next road spot
+    // move up to next road spot.
   }
 
   /**
-   * Calculates the damage output
+   * Calculates the damage output.
    * 
    * @param speed the current speed of the vehicle.
    * @return The respective damage calculation carried out
