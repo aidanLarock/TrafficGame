@@ -2,7 +2,6 @@ package Map;
 
 import java.io.File;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import Players.Player;
 
@@ -16,7 +15,7 @@ import Players.Player;
  * @see Main
  * @see Map
  */
-public class Graph {
+public class Graph implements Map {
 
   private static final File FILE = new File("assets/map.txt");
 
@@ -28,19 +27,21 @@ public class Graph {
 
   private int sizeY;
 
-  private Parser read; 
+  private Parser read;
 
   Integer numRoads;
 
   Integer numInter;
 
+  String type;
+
   /**
    * Constructor which loads and stores the map data.
    */
-  public Graph(){
-    read = new Parser(); 
-    int size = read.getLength(); 
-    LinkedList<Integer> array = read.getTableList(); 
+  public Graph() {
+    read = new Parser();
+    int size = read.getLength();
+    LinkedList<Integer> array = read.getTableList();
 
     this.road = new RoadSegment[size][size];
     this.intersection = new Intersection[size];
@@ -52,8 +53,8 @@ public class Graph {
 
     for (int i = 0; i < size; i++) {
       for (int j = 0; j < size; j++) {
-        int value = array.removeFirst(); 
-        if(value > 0){
+        int value = array.removeFirst();
+        if (value > 0) {
           RoadSegment roadSeg = new RoadSegment(value * 2, value, j);
           roadSeg.createIntersection(this.intersection[i], this.intersection[j]);
           this.road[i][j] = roadSeg;
@@ -61,7 +62,6 @@ public class Graph {
       }
     }
   }
-
 
   /**
    * Checks if the player is at the head of a road segment.
@@ -168,5 +168,25 @@ public class Graph {
     } catch (Exception e) {
       return null;
     }
+  }
+
+  /**
+   * Sets the type of map object as a string.
+   * 
+   * @param s string
+   */
+  @Override
+  public void setType(String s) {
+    this.type = s;
+  }
+
+  /**
+   * Returns the type of Graph as a string.
+   * 
+   * @return the name of type.
+   */
+  @Override
+  public String getType() {
+    return type;
   }
 }
