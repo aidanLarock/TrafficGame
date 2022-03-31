@@ -8,6 +8,7 @@ import Map.Graph;
 import Map.Map;
 import Players.*;
 import Vehicle.SportsCar;
+import Vehicle.Vehicle;
 
 /**
  * This is the Main class of the game. This class will combine
@@ -22,7 +23,7 @@ import Vehicle.SportsCar;
  * @see Map
  * @see GUI
  */
-public class Main {
+public class TrafficMain {
 
   private Game game;
 
@@ -32,13 +33,15 @@ public class Main {
 
   private Player player;
 
-  Main() {
+  private static TrafficMain instance = new TrafficMain();
 
+  public static TrafficMain getInstance() {
+    return instance;
+  }
+
+  private TrafficMain() {
     game = new Game();
     graph = new Graph();
-
-    run(game);
-    System.out.println("");
   }
 
   private int menu() {
@@ -55,7 +58,8 @@ public class Main {
    * 
    * @param game The game object to be used in the GUI.
    */
-  private void run(Game game) {
+  public void run() {
+    PlayerFactory pFactory = new PlayerFactory();
     int choice = menu();
 
     while (choice != 0) {
@@ -66,12 +70,12 @@ public class Main {
           System.out.println("Name of player to add: ");
 
           String temp = str.nextLine();
-          SportsCar sc = new SportsCar();
-          player = new Player(temp, sc);
+
+          Player playerOne = pFactory.getPlayer("Player", "Adam", "Sports");
 
           System.out.println("Player added: " + temp);
-          game.initializeGame(graph, sc, player);
-          game.addPlayer(player, 0, 1, 1);
+          game.initializeGame(graph, playerOne);
+          game.addPlayer(playerOne, 0, 1, 1);
           choice = 3;
           // str.close();
           break;
@@ -104,29 +108,5 @@ public class Main {
       choice = menu();
     }
     System.out.println("Succesfully quit!");
-
   }
-
-  /**
-   * Prepares the GUI for the run function.
-   * 
-   * @param gui The GUI to be used.
-   * @apiNote Used for future versions.
-   */
-  private void initializeGui(Display gui) {
-  }
-
-  /**
-   * Updates the vehicle to the GUI.
-   * 
-   * @param vehicle The game vehicle at question.
-   * @apiNote Used for future versions.
-   */
-  private void updateVehicleGui(Game vehicle) {
-  }
-
-  public static void main(String[] args) {
-    Main m = new Main();
-  }
-
 }

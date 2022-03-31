@@ -5,6 +5,7 @@ src/Vehicle/Bus.java
 src/Vehicle/SportsCar.java
 src/Players/Player.java
 src/Map/Map.java
+src/Map/Parser.java
 src/Map/Graph.java
 src/Map/Intersection.java
 src/Map/RoadSegment.java

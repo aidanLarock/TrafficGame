@@ -2,6 +2,7 @@ package Map;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import Players.Player;
@@ -28,9 +29,40 @@ public class Graph {
 
   private int sizeY;
 
+  private Parser read; 
+
   Integer numRoads;
 
   Integer numInter;
+
+  /**
+   * Constructor which loads and stores the map data.
+   */
+  public Graph(){
+    read = new Parser(); 
+    int size = read.getLength(); 
+    LinkedList<Integer> array = read.getTableList(); 
+
+    this.road = new RoadSegment[size][size];
+    this.intersection = new Intersection[size];
+
+    for (int i = 0; i < size; i++) {
+      Intersection section = new Intersection(4, 1);
+      this.intersection[i] = section;
+    }
+
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        int value = array.removeFirst(); 
+        if(value > 0){
+          RoadSegment roadSeg = new RoadSegment(value * 2, value, j);
+          roadSeg.createIntersection(this.intersection[i], this.intersection[j]);
+          this.road[i][j] = roadSeg;
+        }
+      }
+    }
+  }
+
 
   /**
    * Checks if the player is at the head of a road segment.
@@ -92,39 +124,6 @@ public class Graph {
       }
     }
     return t;
-  }
-
-  /**
-   * Loads and stores the adjacency matrix used for the graph.
-   * 
-   */
-  public void loadMap() {
-    try {
-      File map = FILE;
-      Scanner in = new Scanner(map);
-      sizeX = in.nextInt();
-      sizeY = in.nextInt();
-      this.road = new RoadSegment[sizeX][sizeY];
-      this.intersection = new Intersection[sizeX];
-      for (int i = 0; i < sizeX; i++) {
-        Intersection section = new Intersection(4, 1);
-        this.intersection[i] = section;
-      }
-      for (int i = 0; i < sizeX; i++) {
-        for (int j = 0; j < sizeY; j++) {
-          int value = in.nextInt();
-          if (value > 0) {
-            RoadSegment roadSeg = new RoadSegment(value * 2, value, j);
-            roadSeg.createIntersection(this.intersection[i], this.intersection[j]);
-            this.road[i][j] = roadSeg;
-          }
-        }
-      }
-      in.close();
-    } catch (FileNotFoundException e) {
-      System.out.println("Couldnt Load File.");
-      e.printStackTrace();
-    }
   }
 
   /**

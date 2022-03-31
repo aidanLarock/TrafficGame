@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="Table.xsd"/>
+    <xs:element name="Table">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Row" maxOccurs="512" minOccurs="2">
+                    <xs:complexType>
+                        <xs:sequence> 
+                            <xs:element type="xs:integer" name="int" maxOccurs="512" minOccurs="2"/>     
+                        </xs:sequence>
+                        <xs:attribute name="length" type="xs:integer"></xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

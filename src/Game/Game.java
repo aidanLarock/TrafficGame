@@ -51,13 +51,12 @@ public class Game {
    * @param car    the car(s) to be initalized.
    * @param player the player(s) to be intialized.
    */
-  public void initializeGame(Graph graph, Vehicle car, Player player) {
+  public void initializeGame(Graph graph, Player player) {
     challenge = new Gamble();
-    this.car = car;
+    this.car = player.getVehicle();
     this.player = player;
     this.graph = graph;
     time = 0;
-    graph.loadMap();
   }
 
   /**
