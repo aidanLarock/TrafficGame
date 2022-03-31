@@ -2,6 +2,7 @@ CD into assignment folder,
 
 You should see:
 C:.
+├───assets
 ├───build
 │   ├───Game
 │   ├───GUI
@@ -9,15 +10,14 @@ C:.
 │   ├───Map
 │   ├───Players
 │   └───Vehicle
-├───src
-│   ├───Game
-│   ├───GUI
-│   ├───Main
-│   ├───Map
-│   ├───Players
-│   └───Vehicle
-├───UML
-└───Zargo
+├───images
+└───src
+    ├───Game
+    ├───GUI
+    ├───Main
+    ├───Map
+    ├───Players
+    └───Vehicle
 
 Then run, 
 
@@ -42,4 +42,4 @@ each of which contain class files,
 to run traffic game, once in build directory,
 use command;
 
-java Main.Main
+java Main.TrafficDemo
