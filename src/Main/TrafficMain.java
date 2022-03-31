@@ -7,8 +7,6 @@ import Game.Game;
 import Map.Graph;
 import Map.Map;
 import Players.*;
-import Vehicle.SportsCar;
-import Vehicle.Vehicle;
 
 /**
  * This is the Main class of the game. This class will combine
@@ -18,7 +16,6 @@ import Vehicle.Vehicle;
  * 
  * @author Aidan Larock 6186076, Michael Wisniewski 6402176
  * @version 2 Feb 2022
- * @see Main
  * @see Game
  * @see Map
  * @see GUI
@@ -44,6 +41,11 @@ public class TrafficMain {
     graph = new Graph();
   }
 
+  /**
+   * Main menu for the game
+   * 
+   * @return selection choice of user
+   */
   private int menu() {
     Scanner in = new Scanner(System.in);
     System.out.println("0: Quit");

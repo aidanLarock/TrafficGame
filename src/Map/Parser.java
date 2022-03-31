@@ -4,7 +4,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,7 +16,13 @@ import java.io.File;
 import java.util.LinkedList;
 
 /**
- * Parser
+ * The parser class simply validates the schemea from the XSD file and builds a
+ * map from the given schema using the XML file.
+ * 
+ * @author Aidan Larock 6186076, Michael Wisniewski 6402176
+ * 
+ * @see TrafficMain
+ * @see Graph
  */
 public class Parser {
 
@@ -26,14 +31,28 @@ public class Parser {
     private String length;
     private LinkedList<Integer> arr = new LinkedList<>();
 
+    /**
+     * This method returns the length of a row.
+     * 
+     * @return an integer of the length of row.
+     */
     public int getLength() {
         return Integer.parseInt(length);
     }
 
+    /**
+     * Creates a dynamically sized array with the sizes
+     * of the road segments.
+     * 
+     * @return A linkedlist containing the road values.
+     */
     public LinkedList<Integer> getTableList() {
         return arr;
     }
 
+    /**
+     * This constructor does the heavy lifting in parsing and proccessing the data.
+     */
     public Parser() {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 

@@ -26,10 +26,6 @@ public class Game {
 
   private Graph graph;
 
-  private Player player;
-
-  private Gamble challenge;
-
   /**
    * This method simply updates the time for the game and
    * can be used as the main game loop.
@@ -52,9 +48,8 @@ public class Game {
    * @param player the player(s) to be intialized.
    */
   public void initializeGame(Graph graph, Player player) {
-    challenge = new Gamble();
+    new Gamble();
     this.car = player.getVehicle();
-    this.player = player;
     this.graph = graph;
     time = 0;
   }

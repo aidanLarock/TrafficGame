@@ -31,6 +31,8 @@ public class RoadSegment implements Map {
 
   private int capacities[];
 
+  String type;
+
   public RoadSegment(int length, int numLanes, int endIntersection) {
     this.length = length;
     this.numLanes = numLanes;
@@ -179,6 +181,26 @@ public class RoadSegment implements Map {
   public void createIntersection(Intersection start, Intersection end) {
     this.start = start;
     this.end = end;
+  }
+
+  /**
+   * Sets the type of map object as a string.
+   * 
+   * @param s string
+   */
+  @Override
+  public void setType(String s) {
+    this.type = s;
+  }
+
+  /**
+   * Returns the type of map object as a string.
+   * 
+   * @return the name of the type.
+   */
+  @Override
+  public String getType() {
+    return type;
   }
 
 }

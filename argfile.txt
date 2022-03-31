@@ -2,8 +2,10 @@ src/Vehicle/Vehicle.java
 src/Vehicle/Car.java
 src/Vehicle/Truck.java
 src/Vehicle/Bus.java
+src/Vehicle/VehicleFactory.java
 src/Vehicle/SportsCar.java
 src/Players/Player.java
+src/Players/PlayerFactory.java
 src/Map/Map.java
 src/Map/Parser.java
 src/Map/Graph.java
@@ -13,4 +15,6 @@ src/Map/Turns.java
 src/Game/Game.java
 src/Game/Gamble.java
 src/GUI/Display.java
-src/Main/Main.java
+src/Main/TrafficMain.java
+src/Main/TrafficDemo.java
+src/Main/FactoryDemo.java

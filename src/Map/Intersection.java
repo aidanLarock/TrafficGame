@@ -10,7 +10,7 @@ package Map;
  * @see Main
  * @see Map
  */
-public class Intersection implements Map {
+public class Intersection{
 
   int turns;
   int lanesAvalible;

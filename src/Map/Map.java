@@ -1,23 +1,25 @@
 package Map;
 
 /**
- * The class Graph stores and loads the graph of the
- * Map using an adjacency matrix. Can also get a
- * Road Segement with a start and a end location.
+ * The class Map creates a composite using road segement
+ * and graph, this simple yet effective interface keeps
+ * track of the type as a string whether it is a road
+ * segment of graph, this can be used to uniquely idenfity
+ * the type when a future consideration of building a GUI
+ * is considered.
  * 
  * @author Aidan Larock 6186076, Michael Wisniewski 6402176
- * @version 2 Feb 2022
- * @see Main
- * @see Map
+ * 
+ * @see TrafficMain
+ * @see Graph
+ * @see RoadSegment
  */
 public interface Map {
 
-  /**
-   * sends an integer value of the number of lanes that are avalible in a road or
-   * intersection
-   * 
-   * @return integer number of lanes avalible
-   */
-  public Integer lanesAvalible();
+  public String type = null;
+
+  public void setType(String s);
+
+  public String getType();
 
 }
