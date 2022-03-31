@@ -1,6 +1,6 @@
 package Players;
 
-import Vehicle.VehicleFactory;
+import Vehicle.*;
 
 /**
  * PlayerFactory creates new player objects
