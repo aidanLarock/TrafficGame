@@ -1,7 +1,7 @@
 package Vehicle;
 
 /**
- * The Vheicle Factory class creates new object types based on
+ * The Vehicle Factory class creates new object types based on
  * the paramters provided from a string.
  * 
  * @author Aidan Larock 6186076, Michael Wisniewski 6402176
