@@ -17,16 +17,13 @@ import Players.Player;
  */
 public class Graph implements Map {
 
-  private static final File FILE = new File("assets/map.txt");
+  // private static final File FILE = new File("/assets/map.txt");
 
   private Intersection[] intersection;
 
   private RoadSegment[][] road;
 
-  private int sizeX;
-
-  private int sizeY;
-
+  private int size;
   private Parser read;
 
   Integer numRoads;
@@ -40,7 +37,7 @@ public class Graph implements Map {
    */
   public Graph() {
     read = new Parser();
-    int size = read.getLength();
+    size = read.getLength();
     LinkedList<Integer> array = read.getTableList();
 
     this.road = new RoadSegment[size][size];
@@ -154,8 +151,8 @@ public class Graph implements Map {
    */
   public RoadSegment getRoad(Intersection start, Intersection end) {
     RoadSegment theRoad = null;
-    for (int i = 0; i < this.sizeX; i++) {
-      for (int j = 0; j < this.sizeY; j++) {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
         if (null != this.road[i][j]) {
           if (this.road[i][j].start == start && this.road[i][j].end == end) {
             theRoad = this.road[i][j];
@@ -163,11 +160,7 @@ public class Graph implements Map {
         }
       }
     }
-    try {
-      return theRoad;
-    } catch (Exception e) {
-      return null;
-    }
+    return theRoad;
   }
 
   /**

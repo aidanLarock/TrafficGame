@@ -71,11 +71,10 @@ public class Player {
    * @return The turns possible at a intersection
    * @throws Exception
    */
-  public void moveIntersection(Graph g) throws Exception {
+  public void moveIntersection(Graph g, int laneTurn) throws Exception {
     RoadSegment newRoad = null;
     RoadSegment road = type.getRoad();
     road.pollPlayer(this, 1);
-    int laneTurn = confirm();
     int end = road.getEndIntersection();
     RoadSegment[] r = g.possibleTurns(end);
     try {
@@ -113,21 +112,34 @@ public class Player {
    * Moves the car into a new lane
    * 
    */
-  public void changeLane() {
-    int laneTurn = confirm();
+  public String changeLane(int n) {
+    // int laneTurn = confirm(n);
     RoadSegment road = type.getRoad();
     try {
-      road.changeLane(this, laneTurn);
+      road.changeLane(this, n);
 
     } catch (Exception e) {
-      System.out.println("Invalid lane");
+      // System.out.println("Invalid lane");
+      return "Invalid Lane";
     }
+    return "Changed lane to lane: " + n;
+  }
+
+  public String lanesString() {
+    String l = "";
+    int k = -1;
+    for (Turns t : Turns.values()) {
+      l = t + " " + k + " ";
+      k++;
+    }
+    return l;
   }
 
   /**
    * Asks the player to confirm the players movemment.
+   * 
    */
-  public int confirm() {
+  public int confirm(int n) {
     System.out.println("Enter a movement command: ");
     int k = -1;
     for (Turns t : Turns.values()) {
@@ -156,16 +168,17 @@ public class Player {
       Vehicle type;
 
       @Override
-      public void changeLane() {
+      public String changeLane(int n) {
         int laneTurn = rng.nextInt(2) - 1; // rand num
         RoadSegment road = type.getRoad();
         if (asserting(laneTurn) == true) {
           road.changeLane(this, laneTurn);
         }
+        return "Changed Lane: " + laneTurn;
       }
 
       @Override
-      public void moveIntersection(Graph g) throws Exception {
+      public void moveIntersection(Graph g, int x) throws Exception {
         RoadSegment road = type.getRoad();
         road.pollPlayer(this, 1);
         int laneTurn = rng.nextInt(2) - 1; // rand num

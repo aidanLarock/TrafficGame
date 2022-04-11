@@ -22,12 +22,12 @@ public class PlayerFactory {
      * @return player object
      */
     public Player getPlayer(String playerType, String name, String vehicle) {
-        if (playerType.toLowerCase().equals("Player")) {
+        if (playerType.toLowerCase().equals("player")) {
             return new Player(name, vFactory.getVehicle(vehicle));
-        } else if (playerType.toLowerCase().equals("AI")) {
+        } else if (playerType.toLowerCase().equals("ai")) {
             return new Player(name, vFactory.getVehicle(vehicle)).makeAIPlayer(name, vFactory.getVehicle(vehicle));
         } else {
-            System.out.println("Provided type is not available.");
+            System.out.println("Player Provided type is not available.");
             return null;
         }
     }

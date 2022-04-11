@@ -36,7 +36,7 @@ public class TrafficMain {
     return instance;
   }
 
-  private TrafficMain() {
+  public TrafficMain() {
     game = new Game();
     graph = new Graph();
   }
@@ -86,13 +86,13 @@ public class TrafficMain {
           System.out.println("Continuing game...");
           game.updateTime();
           System.out.println("Open lanes: " + player.getLaneNumber());
-          System.out.println("Change lanes?");
-          player.changeLane();
+          System.out.println("Lane to Change to: ");
+          player.changeLane(34);
 
           if (graph.isPlayerHead(player)) {
             try {
               System.out.println("...At intersection...");
-              player.moveIntersection(graph);
+              player.moveIntersection(graph, 4);
               System.out.println("Changed Intersections...");
             } catch (Exception e) {
               System.out.println("Sike!, we actually can't do that");

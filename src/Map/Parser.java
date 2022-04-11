@@ -26,7 +26,7 @@ import java.util.LinkedList;
  */
 public class Parser {
 
-    private static final String FILENAME = "../assets/Map.xml";
+    private static final String FILENAME = "../assets/Map.xml"; // build use ../assets/Map.xml
     private static final String FILENAMEX = "../assets/Map.xsd";
     private String length;
     private LinkedList<Integer> arr = new LinkedList<>();

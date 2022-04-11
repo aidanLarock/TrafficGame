@@ -18,3 +18,5 @@ src/GUI/Display.java
 src/Main/TrafficMain.java
 src/Main/TrafficDemo.java
 src/Main/FactoryDemo.java
+src/Server/Client.java
+src/Server/Server.java

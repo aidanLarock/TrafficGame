@@ -18,16 +18,16 @@ public class VehicleFactory {
      * @return vehicle object
      */
     public Vehicle getVehicle(String vehicle) {
-        if (vehicle.toLowerCase().equals("Sports")) {
+        if (vehicle.toLowerCase().equals("sports")) {
             return new SportsCar();
-        } else if (vehicle.toLowerCase().equals("Car")) {
+        } else if (vehicle.toLowerCase().equals("car")) {
             return new Car();
-        } else if (vehicle.toLowerCase().equals("Truck")) {
+        } else if (vehicle.toLowerCase().equals("truck")) {
             return new Truck();
-        } else if (vehicle.toLowerCase().equals("Bus")) {
+        } else if (vehicle.toLowerCase().equals("bus")) {
             return new Bus();
         } else {
-            System.out.println("Provided type is not available.");
+            System.out.println("Vehicle Provided type is not available.");
             return null;
         }
     }
