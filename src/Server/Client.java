@@ -53,10 +53,14 @@ public class Client {
                 System.out.println(serverInput);
                 userInput = userIn.readLine();
                 out.println(userInput);
-
-                if (Integer.parseInt(userInput) == 0) {
-                    break;
+                try {
+                    if (Integer.parseInt(userInput) == 0) {
+                        break;
+                    }
+                } catch (Exception e) {
+                    // System.out.println("Exit");
                 }
+
             }
         } catch (UnknownHostException e) {
             System.err.println("Could not connect to: " + host);

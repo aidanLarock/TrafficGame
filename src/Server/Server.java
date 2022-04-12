@@ -10,9 +10,6 @@ import Players.PlayerFactory;
 import java.io.*;
 
 public class Server {
-
-    // TrafficMain main = new TrafficMain();
-
     public static void main(String[] args) throws IOException {
         PlayerFactory pFactory = new PlayerFactory();
         Graph graph = new Graph();
@@ -35,7 +32,6 @@ public class Server {
             System.out.println("Connection accepted!");
             Player playerOne = null;
             String inputLine;
-            // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
             out.println("Welcome To Traffic Sim");
             out.println(menuS);
@@ -63,7 +59,7 @@ public class Server {
                             out.println("Continuing Game..." + " Open lanes: " + playerOne.getLaneNumber()
                                     + ". Can Change lanes." + enter);
                             in.readLine();
-                            out.println("Options are: " + playerOne.lanesString());
+                            out.println("Options are: " + playerOne.lanesString() + " Please select one.");
                             try {
                                 int lane = Integer.parseInt(in.readLine());
                                 out.println(playerOne.changeLane(lane) + enter);
@@ -73,7 +69,7 @@ public class Server {
                             }
                             if (graph.isPlayerHead(playerOne)) {
                                 try {
-                                    out.println("...At intersection... 0, 1 , 2");
+                                    out.println("...At intersection... 1, 2 Please select one.");
                                     playerOne.moveIntersection(graph, Integer.parseInt(in.readLine()));
                                     out.println("Changed Intersections..." + enter);
                                     in.readLine();

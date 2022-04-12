@@ -1,84 +1,50 @@
-0: Quit
-1: Add player
-2: Continue game
+SERVER OUTPUT 
+
+Warning: validation was turned on but an org.xml.sax.ErrorHandler was not set, which is probably not what is desired.  Parser will use a default ErrorHandler to print the first 0  errors.  Please call the setErrorHandler method to fix this.
+Error: URI=file:/C:/Users/Michael/Desktop/TrafficGit/build/../assets/Map.xml Line=2: Document root 
+element "Table", must match DOCTYPE root "null".
+Error: URI=file:/C:/Users/Michael/Desktop/TrafficGit/build/../assets/Map.xml Line=2: Document is invalid: no grammar found.
+STARTING SERVER
+Connection accepted!
+Server added: Robson sports
+Client is continuing game...
+Player is head
+Client is continuing game...
+Client exit
+
+
+
+#--------------------------------------------------------------------------------------------------------------------#
+CLIENT OUTPUT
+
+
+STARTING CLIENT
+Welcome To Traffic Sim
+Select one hit enter to continue ||  0: Quit  ||  1: Add Player  ||  2: Continue Game  ||
 1
-Adding player...
-Name of player to add:
-Guy
-Player added: Guy
-
-
-
-
-0: Quit
-1: Add player
-2: Continue game
+Name of player to add: 
+Robson
+Added Player: Robson. Specify type of vehicle, Bus, Car, Sports, Truck: 
+sports
+Vehicle Added: sports. Select one hit enter to continue ||  0: Quit  ||  1: Add Player  ||  2: Continue Game  ||
 2
-Continuing game...
-Open lanes: 2
-Change lanes?
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 0
-Player is head
-...At intersection...
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 1
-Changed Intersections...
+Continuing Game... Open lanes: 2. Can Change lanes. Hit Enter to continue
 
+Options are: RIGHT 1  Please select one.
+1
+Changed lane to lane: 1 Hit Enter to continue
 
+...At intersection... 1, 2 Please select one.
+1
+Changed Intersections... Hit Enter to continue
 
-
-0: Quit
-1: Add player
-2: Continue game
+Select one hit enter to continue ||  0: Quit  ||  1: Add Player  ||  2: Continue Game  ||
 2
-Continuing game...
-Open lanes: 4
-Change lanes?
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 0
+Continuing Game... Open lanes: 4. Can Change lanes. Hit Enter to continue
 
+Options are: RIGHT 1  Please select one.
+1
+Changed lane to lane: 1 Hit Enter to continue
 
-
-
-0: Quit
-1: Add player
-2: Continue game
-2
-Continuing game...
-Open lanes: 4
-Change lanes?
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 0
-Player is head
-...At intersection...
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 1
-Changed Intersections...
-
-
-
-
-0: Quit
-1: Add player
-2: Continue game
-2
-Continuing game...
-Open lanes: 6
-Change lanes?
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 0
-Player is head
-...At intersection...
-Enter a movement command:
-LEFT -1 STRAIGHT 0 RIGHT 1 1
-Changed Intersections...
-
-
-
-
-0: Quit
-1: Add player
-2: Continue game
+Select one hit enter to continue ||  0: Quit  ||  1: Add Player  ||  2: Continue Game  ||
 0
-Succesfully quit!

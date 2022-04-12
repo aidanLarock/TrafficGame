@@ -9,6 +9,7 @@ C:.
 │   ├───Main
 │   ├───Map
 │   ├───Players
+│   ├───Server
 │   └───Vehicle
 ├───images
 └───src
@@ -17,9 +18,10 @@ C:.
     ├───Main
     ├───Map
     ├───Players
+    ├───Server
     └───Vehicle
 
-Then run, 
+Then run, which will compile the src folder,  
 
 javac -d build @argfile.txt
 
@@ -29,17 +31,27 @@ RUNNING
 
 Then cd into build;
 
-cd/build
+cd build
 
 You should see,
+C:.
 ├───Game
 ├───GUI
 ├───Main
 ├───Map
 ├───Players
+├───Server
 └───Vehicle
 each of which contain class files, 
 to run traffic game, once in build directory,
 use command;
 
-java Main.TrafficDemo
+First begin the server with <port number>, 
+
+java Server.Server <Port Number>
+
+Then we run the client either with localhost or an IP to the server on another command prompt. 
+
+java Server.Client localhost <Port Number>
+
+For our case <Port Number> can be set to any arbitrary value bewteen 1000 to 9999. 

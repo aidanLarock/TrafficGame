@@ -129,7 +129,7 @@ public class Player {
     String l = "";
     int k = -1;
     for (Turns t : Turns.values()) {
-      l = t + " " + k + " ";
+      l = l + " " + t + " " + k + " ";
       k++;
     }
     return l;

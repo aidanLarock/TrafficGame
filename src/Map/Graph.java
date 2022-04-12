@@ -1,6 +1,5 @@
 package Map;
 
-import java.io.File;
 import java.util.LinkedList;
 
 import Players.Player;
@@ -24,6 +23,7 @@ public class Graph implements Map {
   private RoadSegment[][] road;
 
   private int size;
+
   private Parser read;
 
   Integer numRoads;
